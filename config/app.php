@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
     /*
     |--------------------------------------------------------------------------
@@ -121,7 +121,7 @@ return [
 
     'key' => env('APP_KEY'),
 
-    'cipher' => 'AES-256-CBC',
+    'cipher' => env('APP_CIPHER', 'AES-256-CBC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -227,6 +227,54 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+    ],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Debug mode server credentials protection
+    |--------------------------------------------------------------------------
+    |
+    | @reference : https://laravel.com/docs/7.x/configuration#hiding-environment-variables-from-debug
+    | @author roy <roy@yooniks.co>
+    |
+    */
+
+    'debug_blacklist' => [
+        '_ENV' => [
+            'APP_KEY',
+            'DB_HOST',
+            'DB_PORT',
+            'DB_DATABASE',
+            'DB_USERNAME',
+            'DB_PASSWORD',
+            'MAIL_FROM_ADDRESS',
+            'MAIL_USERNAME',
+            'MAIL_PASSWORD',
+            'DEFAULT_ADMIN_PASS',
+            'DEFAULT_ADMIN_EMAIL',
+            'DEFAULT_USER_PASS',
+            'DEFAULT_USER_EMAIL',
+        ],
+
+        '_SERVER' => [
+            'APP_KEY',
+            'DB_HOST',
+            'DB_PORT',
+            'DB_DATABASE',
+            'DB_USERNAME',
+            'DB_PASSWORD',
+            'MAIL_FROM_ADDRESS',
+            'MAIL_USERNAME',
+            'MAIL_PASSWORD',
+            'DEFAULT_ADMIN_PASS',
+            'DEFAULT_ADMIN_EMAIL',
+            'DEFAULT_USER_PASS',
+            'DEFAULT_USER_EMAIL',
+        ],
+
+        '_POST' => [
+            'password',
+        ],
     ],
 
 ];
