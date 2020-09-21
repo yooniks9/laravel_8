@@ -9,6 +9,8 @@ class DemoController extends Controller
 {
     public function index(Request $request)
     {
-        echo "Testing ~";
+        return view('demo', [
+            'info' => 'this is information',
+        ]);
     }
 }

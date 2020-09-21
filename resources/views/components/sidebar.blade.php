@@ -1,3 +1,13 @@
-<div>
-    <!-- I begin to speak only when I am certain what I will say is not better left unsaid - Cato the Younger -->
+<!-- $attributes carry forward the id/class from the X class component -->
+<div {{ $attributes->merge(['class' => 'text-xl']) }}>
+    <h1>{{ $title }},Hello from sidebar component</h1>
+    <h2>{{ $info }}</h2>
+    <ul>
+    @foreach ($list('4th_appended_item') as $item)
+        <li> {{ $item }} </li>
+    @endforeach
+    </ul>
+
+    <h3>{{ $x_title }}</h3>
+    {{ $slot }}
 </div>
